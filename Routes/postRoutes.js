@@ -21,16 +21,6 @@ router.get('/', async (req, res) => {
     }
   });
 
-  router.patch('/:id', async (req, res) => {
-    try {
-      const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      if (!post) return res.status(404).send('Post not found');
-      res.json(post);
-    } catch (error) {
-      res.status(400).send('Error updating post');
-    }
-  });
-
   router.delete('/:id', async (req, res) => {
     try {
       const post = await Post.findByIdAndDelete(req.params.id);
