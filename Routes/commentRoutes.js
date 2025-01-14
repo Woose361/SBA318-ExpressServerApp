@@ -24,17 +24,6 @@ router.post('/', async (req, res) => {
 });
 
 
-router.patch('/:id', async (req, res) => {
-  try {
-    const comment = await Comment.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!comment) return res.status(404).send('Comment not found');
-    res.json(comment);
-  } catch (error) {
-    res.status(400).send('Error updating comment');
-  }
-});
-
-
 router.delete('/:id', async (req, res) => {
   try {
     const comment = await Comment.findByIdAndDelete(req.params.id);
